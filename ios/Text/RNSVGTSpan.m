@@ -174,7 +174,7 @@ TopAlignedLabel *label;
     CFStringRef string = (__bridge CFStringRef)self.content;
     NSMutableDictionary * attrs = [self getAttributes:fontdata];
     CFMutableDictionaryRef attributes = (__bridge CFMutableDictionaryRef)attrs;
-    CFAttributedStringRef attrString = CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
+    CFAttributedStringCreate(kCFAllocatorDefault, string, attributes);
 
     enum RNSVGTextAnchor textAnchor = fontdata->textAnchor;
     NSTextAlignment align;
@@ -200,7 +200,7 @@ TopAlignedLabel *label;
     if (!label) {
         label = [[TopAlignedLabel alloc] init];
     }
-    label.attributedText = (__bridge NSAttributedString * _Nullable)(attrString);
+    label.text = (__bridge NSString * _Nullable)(string);
     label.baselineAdjustment = UIBaselineAdjustmentNone;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.backgroundColor = UIColor.clearColor;
